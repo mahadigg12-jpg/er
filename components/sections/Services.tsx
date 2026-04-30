@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Phone, Headphones, FileText, Sparkles } from 'lucide-react'
+import { Phone, MessageSquare, ClipboardList, Zap } from 'lucide-react'
 import FloatingElements from '@/components/FloatingElements'
 import { useLanguage } from '@/context/LanguageContext'
 import FullScreenSection from '@/components/FullScreenSection'
@@ -21,21 +21,21 @@ export default function Services() {
       id: 2,
       title: t('services.outbound'),
       description: t('services.outbound.desc'),
-      icon: Headphones,
+      icon: MessageSquare,
       color: 'text-primary',
     },
     {
       id: 3,
       title: t('services.technical'),
       description: t('services.technical.desc'),
-      icon: FileText,
+      icon: ClipboardList,
       color: 'text-accent',
     },
     {
       id: 4,
       title: t('services.specialized'),
       description: t('services.specialized.desc'),
-      icon: Sparkles,
+      icon: Zap,
       color: 'text-primary',
     },
   ]
@@ -94,7 +94,7 @@ const getDirectionalVariants = (index: number) => ({
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               {t('services.title')}{' '}
-              <span className="gradient-hch bg-clip-text text-transparent">Services</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Services</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Premium solutions for all your customer communication needs
@@ -119,7 +119,7 @@ const getDirectionalVariants = (index: number) => ({
               <motion.div
                 key={service.id}
                 variants={getDirectionalVariants(index)}
-                whileHover={{ y: -8, scale: 1.02 }}
+                whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
                 className="group relative"
                 style={{ willChange: "transform, opacity" }}

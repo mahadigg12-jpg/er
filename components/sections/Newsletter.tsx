@@ -3,20 +3,24 @@
 import { motion } from 'framer-motion'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Mail } from 'lucide-react'
+import { Mail, User, Building2 } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Newsletter() {
-  const [email, setEmail] = useState('')
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: ''
+  })
   const [subscribed, setSubscribed] = useState(false)
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Subscribed:', email)
+    console.log('Subscribed:', formData)
     setSubscribed(true)
     setTimeout(() => {
       setSubscribed(false)
-      setEmail('')
+      setFormData({ name: '', company: '', email: '' })
     }, 3000)
   }
 
@@ -47,31 +51,61 @@ export default function Newsletter() {
           </p>
 
           <motion.form
-            onSubmit={handleSubscribe}
-            className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+            onSubmit={handleSubmit}
+            className="max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="flex-1 relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <Input
-                type="email"
-                placeholder="deine@email.de"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="pl-12 bg-white/95 border-0 text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-white/20"
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              {/* Name field */}
+              <div className="relative">
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Input
+                  type="text"
+                  placeholder="Dein Name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="pl-12 bg-white/95 border-0 text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-white/20 h-12"
+                />
+              </div>
+              
+              {/* Company field */}
+              <div className="relative">
+                <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Input
+                  type="text"
+                  placeholder="Dein Unternehmen"
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  className="pl-12 bg-white/95 border-0 text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-white/20 h-12"
+                />
+              </div>
             </div>
-            <Button
-              type="submit"
-              className="bg-white hover:bg-gray-100 text-primary font-bold px-8"
-              disabled={subscribed}
-            >
-              {subscribed ? '✓ Subscribed' : 'Abonnieren'}
-            </Button>
+            
+            {/* Email and Submit row */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-1 relative">
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Input
+                  type="email"
+                  placeholder="deine@email.de"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  className="pl-12 bg-white/95 border-0 text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-white/20 h-12"
+                />
+              </div>
+              <Button
+                type="submit"
+                className="bg-white hover:bg-gray-100 text-primary font-bold px-8 h-12"
+                disabled={subscribed}
+              >
+                {subscribed ? 'Abonniert!' : 'Abonnieren'}
+              </Button>
+            </div>
           </motion.form>
 
           <motion.p

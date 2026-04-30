@@ -65,7 +65,7 @@ export default function Results() {
                   aria-hidden="true"
                 />
                 <motion.div
-                  className="relative bg-gradient-to-br from-gradient-hch/5 to-accent/5 rounded-2xl p-8 border-2 border-gradient-hch/20 text-center"
+                  className="relative bg-gradient-to-br from-secondary/5 to-accent/5 rounded-2xl p-8 border-2 border-primary/20 text-center"
                   whileHover={{
                     borderColor: 'rgba(185, 30, 140, 0.5)',
                     boxShadow: '0 0 30px rgba(185, 30, 140, 0.2), inset 0 1px 0 rgba(255,255,255,0.5)'
@@ -81,7 +81,7 @@ export default function Results() {
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                   </motion.div>
-                  <div className="text-4xl md:text-5xl font-bold gradient-hch bg-clip-text text-transparent mb-2">
+                  <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary mb-2">
                     <AnimatedCounter
                       value={stat.number}
                       duration={2.5}

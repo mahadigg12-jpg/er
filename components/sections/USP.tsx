@@ -43,7 +43,7 @@ export default function USP() {
           viewport={{ once: true, margin: "0px 0px -100px 0px" }}
           style={{ willChange: "transform, opacity" }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('usp.title')} <span className="gradient-hch bg-clip-text text-transparent">HCH?</span></h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('usp.title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">HCH?</span></h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">Our unique strengths and competitive advantages for partners</p>
         </motion.div>
 

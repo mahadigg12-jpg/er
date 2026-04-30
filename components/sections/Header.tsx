@@ -1,9 +1,8 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { Menu, X, Globe, Phone, Headphones, Users, Briefcase, Mail, Star, Sparkles } from 'lucide-react'
+import { Menu, X, Globe, Headphones, Users, Briefcase, Mail, Star, Shield } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useLanguage } from '@/context/LanguageContext'
 
@@ -24,7 +23,7 @@ export default function Header() {
     { label: t('services.title'), href: '#services', icon: Headphones },
     { label: 'About', href: '#about', icon: Users },
     { label: 'Benefits', href: '#benefits', icon: Star },
-    { label: t('team.title'), href: '#team', icon: Sparkles },
+    { label: t('team.title'), href: '#team', icon: Shield },
     { label: 'Careers', href: '#careers', icon: Briefcase },
     { label: t('nav.contact'), href: '#contact', icon: Mail },
   ]
@@ -92,9 +91,8 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Right side buttons */}
+          {/* Right side - Language Toggle only */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Language Toggle */}
             <motion.button
               onClick={() => setLanguage(language === 'en' ? 'de' : 'en')}
               className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
@@ -108,39 +106,6 @@ export default function Header() {
               <Globe className="w-4 h-4" />
               <span className="text-sm font-medium uppercase">{language}</span>
             </motion.button>
-
-            <motion.div whileHover={{ scale: 1.05 }}>
-              <Button
-                variant="outline"
-                className={`transition-all ${
-                  scrolled 
-                    ? 'border-primary text-primary hover:bg-primary/10' 
-                    : 'border-white/50 text-white hover:bg-white/10'
-                }`}
-              >
-                {t('nav.login')}
-              </Button>
-            </motion.div>
-            
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-            >
-              <Button
-                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white relative overflow-hidden group"
-                style={{
-                  boxShadow: '0 4px 20px rgba(185, 30, 140, 0.4)'
-                }}
-              >
-                <motion.span
-                  className="absolute inset-0 bg-white/20"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: '100%' }}
-                  transition={{ duration: 0.5 }}
-                />
-                <Phone className="w-4 h-4 mr-2" />
-                <span className="relative">{t('nav.contact')}</span>
-              </Button>
-            </motion.div>
           </div>
 
           {/* Mobile menu toggle */}
@@ -180,20 +145,7 @@ export default function Header() {
                 </a>
               )
             })}
-            <div className="flex flex-col gap-3 pt-4 mt-4 border-t border-gray-200">
-              <Button
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary/10 w-full"
-              >
-                {t('nav.login')}
-              </Button>
-              <Button
-                className="bg-primary hover:bg-primary/90 text-white w-full"
-              >
-                <Phone className="w-4 h-4 mr-2" />
-                {t('nav.contact')}
-              </Button>
-            </div>
+
           </nav>
         </motion.div>
       </div>

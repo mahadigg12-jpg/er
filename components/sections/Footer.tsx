@@ -1,10 +1,8 @@
 'use client'
 
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
-import { useRef } from 'react'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Facebook, Linkedin, Instagram, Mail, ArrowUp } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Facebook, Linkedin, Instagram, Mail } from 'lucide-react'
 
 const footerLinks = [
   {
@@ -29,39 +27,6 @@ const socials = [
 ]
 
 export default function Footer() {
-  const buttonRef = useRef<HTMLButtonElement>(null)
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const rect = buttonRef.current?.getBoundingClientRect()
-    if (!rect) return
-
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-
-    const distance = Math.hypot(e.clientX - centerX, e.clientY - centerY)
-    const maxDistance = 100
-
-    if (distance < maxDistance) {
-      const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX)
-      const targetX = Math.cos(angle) * (maxDistance - distance) * 0.5
-      const targetY = Math.sin(angle) * (maxDistance - distance) * 0.5
-
-      mouseX.set(targetX)
-      mouseY.set(targetY)
-    }
-  }
-
-  const handleMouseLeave = () => {
-    mouseX.set(0)
-    mouseY.set(0)
-  }
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   return (
     <footer className="w-full bg-gray-900 text-white">
       <div className="container mx-auto px-4 md:px-8">
@@ -158,32 +123,7 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Scroll to top with magnetic effect */}
-          <motion.button
-            ref={buttonRef}
-            onClick={scrollToTop}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className="relative w-10 h-10 rounded-full bg-primary hover:bg-primary/90 flex items-center justify-center transition-colors overflow-hidden"
-            style={{ x: mouseX, y: mouseY }}
-            whileHover={{ scale: 1.15 }}
-            whileTap={{ scale: 0.85 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-          >
-            <motion.div
-              className="absolute inset-0 rounded-full bg-accent opacity-0"
-              whileHover={{ opacity: 0.2 }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-              className="absolute inset-1 rounded-full border border-white/20"
-            />
-            <motion.div whileHover={{ y: -2 }}>
-              <ArrowUp className="w-5 h-5 relative z-10" />
-            </motion.div>
-          </motion.button>
+
         </div>
       </div>
     </footer>
