@@ -11,7 +11,6 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { language, setLanguage, t } = useLanguage()
-  const { scrollY } = useScroll()
 
   useEffect(() => {
     const handleScroll = () => {
