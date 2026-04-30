@@ -33,7 +33,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="w-full py-20 md:py-32 bg-gradient-to-br from-blue-50 to-purple-50">
+    <section id="contact" className="w-full py-20 md:py-32 bg-gradient-to-br from-blue-50 to-purple-50">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Left contact info */}

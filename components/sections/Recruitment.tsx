@@ -8,7 +8,7 @@ import ScrollTriggeredCTA from '@/components/ScrollTriggeredCTA'
 
 export default function Recruitment() {
   return (
-    <section className="w-full py-20 md:py-32 bg-gradient-to-br from-accent via-accent/80 to-primary/20">
+    <section id="careers" className="w-full py-20 md:py-32 bg-gradient-to-br from-accent via-accent/80 to-primary/20">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left image */}
@@ -20,7 +20,7 @@ export default function Recruitment() {
             viewport={{ once: true }}
           >
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/HCH_webProfil_Logos3-zRlxLQ5s7IDtSoqE9JuWjaO5lA6q9U.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/HCH_heroe_man_thumbsup-k0qCHHqOX8vfDPxY3KtQmATdzzOVZn.png"
               alt="Heroes needed"
               fill
               className="object-contain drop-shadow-2xl"

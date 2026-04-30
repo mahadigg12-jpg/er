@@ -11,6 +11,7 @@ import ContactForm from '@/components/sections/ContactForm'
 import Newsletter from '@/components/sections/Newsletter'
 import Footer from '@/components/sections/Footer'
 import StickyMobileCTA from '@/components/sections/StickyMobileCTA'
+import ScrollToTop from '@/components/ScrollToTop'
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       <Newsletter />
       <Footer />
       <StickyMobileCTA />
+      <ScrollToTop />
     </main>
   )
 }
